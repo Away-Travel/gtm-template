@@ -1,0 +1,11 @@
+{
+  "name": "fides-gtm",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Fides.js integration with Google Tag Manager",
+  "scripts": {
+    "build": "node scripts/build.js"
+  },
+  "author": "Ethyca",
+  "license": "UNLICENSED"
+}

@@ -1,0 +1,400 @@
+[
+  {
+    "type": "GROUP",
+    "name": "Defaults",
+    "displayName": "Consent Defaults",
+    "groupStyle": "ZIPPY_CLOSED",
+    "subParams": [
+      {
+        "type": "SELECT",
+        "name": "default_analytics_storage",
+        "displayName": "analytics_storage",
+        "macrosInSelect": true,
+        "selectItems": [
+          {
+            "value": "granted",
+            "displayValue": "Granted"
+          },
+          {
+            "value": "denied",
+            "displayValue": "Denied"
+          }
+        ],
+        "simpleValueType": true,
+        "defaultValue": "denied"
+      },
+      {
+        "type": "SELECT",
+        "name": "default_ad_storage",
+        "displayName": "ad_storage",
+        "macrosInSelect": true,
+        "selectItems": [
+          {
+            "value": "granted",
+            "displayValue": "Granted"
+          },
+          {
+            "value": "denied",
+            "displayValue": "Denied"
+          }
+        ],
+        "simpleValueType": true,
+        "defaultValue": "denied"
+      },
+      {
+        "type": "SELECT",
+        "name": "default_ad_user_data",
+        "displayName": "ad_user_data",
+        "macrosInSelect": true,
+        "selectItems": [
+          {
+            "value": "granted",
+            "displayValue": "Granted"
+          },
+          {
+            "value": "denied",
+            "displayValue": "Denied"
+          }
+        ],
+        "simpleValueType": true,
+        "defaultValue": "denied"
+      },
+      {
+        "type": "SELECT",
+        "name": "default_ad_personalization",
+        "displayName": "ad_personalization",
+        "macrosInSelect": true,
+        "selectItems": [
+          {
+            "value": "granted",
+            "displayValue": "Granted"
+          },
+          {
+            "value": "denied",
+            "displayValue": "Denied"
+          }
+        ],
+        "simpleValueType": true,
+        "defaultValue": "denied"
+      },
+      {
+        "type": "SELECT",
+        "name": "default_personalization_storage",
+        "displayName": "personalization_storage",
+        "macrosInSelect": true,
+        "selectItems": [
+          {
+            "value": "granted",
+            "displayValue": "Granted"
+          },
+          {
+            "value": "denied",
+            "displayValue": "Denied"
+          }
+        ],
+        "simpleValueType": true,
+        "defaultValue": "denied"
+      },
+      {
+        "type": "SELECT",
+        "name": "default_functionality_storage",
+        "displayName": "functionality_storage",
+        "macrosInSelect": true,
+        "selectItems": [
+          {
+            "value": "granted",
+            "displayValue": "Granted"
+          },
+          {
+            "value": "denied",
+            "displayValue": "Denied"
+          }
+        ],
+        "simpleValueType": true,
+        "defaultValue": "granted"
+      },
+      {
+        "type": "SELECT",
+        "name": "default_security_storage",
+        "displayName": "security_storage",
+        "macrosInSelect": true,
+        "selectItems": [
+          {
+            "value": "granted",
+            "displayValue": "Granted"
+          },
+          {
+            "value": "denied",
+            "displayValue": "Denied"
+          }
+        ],
+        "simpleValueType": true,
+        "defaultValue": "granted"
+      }
+    ]
+  },
+  {
+    "type": "GROUP",
+    "name": "Regional Consent Defaults",
+    "displayName": "Regional Consent Defaults",
+    "groupStyle": "ZIPPY_CLOSED",
+    "subParams": [
+      {
+        "type": "PARAM_TABLE",
+        "name": "regionalOverrides",
+        "displayName": "Regional Consent Defaults",
+        "paramTableColumns": [
+          {
+            "param": {
+              "type": "TEXT",
+              "name": "region",
+              "displayName": "Region",
+              "simpleValueType": true,
+              "valueHint": "US-CA",
+              "help": "Comma separated list of ISO 3166-2 regions"
+            },
+            "isUnique": true
+          },
+          {
+            "param": {
+              "type": "SELECT",
+              "name": "analytics_storage",
+              "displayName": "analytics_storage",
+              "macrosInSelect": true,
+              "selectItems": [
+                {
+                  "value": "granted",
+                  "displayValue": "Granted"
+                },
+                {
+                  "value": "denied",
+                  "displayValue": "Denied"
+                }
+              ],
+              "simpleValueType": true,
+              "defaultValue": "denied"
+            },
+            "isUnique": false
+          },
+          {
+            "param": {
+              "type": "SELECT",
+              "name": "ad_storage",
+              "displayName": "ad_storage",
+              "macrosInSelect": true,
+              "selectItems": [
+                {
+                  "value": "granted",
+                  "displayValue": "Granted"
+                },
+                {
+                  "value": "denied",
+                  "displayValue": "Denied"
+                }
+              ],
+              "simpleValueType": true,
+              "defaultValue": "denied"
+            },
+            "isUnique": false
+          },
+          {
+            "param": {
+              "type": "SELECT",
+              "name": "ad_user_data",
+              "displayName": "ad_user-data",
+              "macrosInSelect": true,
+              "selectItems": [
+                {
+                  "value": "granted",
+                  "displayValue": "Granted"
+                },
+                {
+                  "value": "denied",
+                  "displayValue": "Denied"
+                }
+              ],
+              "simpleValueType": true,
+              "defaultValue": "denied"
+            },
+            "isUnique": false
+          },
+          {
+            "param": {
+              "type": "SELECT",
+              "name": "ad_personalization",
+              "displayName": "ad_personalization",
+              "macrosInSelect": true,
+              "selectItems": [
+                {
+                  "value": "granted",
+                  "displayValue": "Granted"
+                },
+                {
+                  "value": "denied",
+                  "displayValue": "Denied"
+                }
+              ],
+              "simpleValueType": true,
+              "defaultValue": "denied"
+            },
+            "isUnique": false
+          },
+          {
+            "param": {
+              "type": "SELECT",
+              "name": "personalization_storage",
+              "displayName": "personalization_storage",
+              "macrosInSelect": true,
+              "selectItems": [
+                {
+                  "value": "granted",
+                  "displayValue": "Granted"
+                },
+                {
+                  "value": "denied",
+                  "displayValue": "Denied"
+                }
+              ],
+              "simpleValueType": true,
+              "defaultValue": "denied"
+            },
+            "isUnique": false
+          },
+          {
+            "param": {
+              "type": "SELECT",
+              "name": "functionality_storage",
+              "displayName": "functionality_storage",
+              "macrosInSelect": true,
+              "selectItems": [
+                {
+                  "value": "granted",
+                  "displayValue": "Granted"
+                },
+                {
+                  "value": "denied",
+                  "displayValue": "Denied"
+                }
+              ],
+              "simpleValueType": true,
+              "defaultValue": "granted"
+            },
+            "isUnique": false
+          },
+          {
+            "param": {
+              "type": "SELECT",
+              "name": "security_storage",
+              "displayName": "security_storage",
+              "macrosInSelect": true,
+              "selectItems": [
+                {
+                  "value": "granted",
+                  "displayValue": "Granted"
+                },
+                {
+                  "value": "denied",
+                  "displayValue": "Denied"
+                }
+              ],
+              "simpleValueType": true,
+              "defaultValue": "granted"
+            },
+            "isUnique": false
+          }
+        ],
+        "help": "Override consent defaults by region here.",
+        "newRowButtonText": "Override regional default",
+        "defaultValue": [
+          {
+            "region": "US",
+            "analytics_storage": "granted",
+            "ad_storage": "granted",
+            "ad_user_data": "granted",
+            "ad_personalization": "granted",
+            "personalization_storage": "granted",
+            "functionality_storage": "granted",
+            "security_storage": "granted"
+          },
+          {
+            "region": "CA",
+            "analytics_storage": "granted",
+            "ad_storage": "granted",
+            "ad_user_data": "granted",
+            "ad_personalization": "granted",
+            "personalization_storage": "granted",
+            "functionality_storage": "granted",
+            "security_storage": "granted"
+          },
+          {
+            "region": "CA-QC",
+            "analytics_storage": "denied",
+            "ad_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "personalization_storage": "denied",
+            "functionality_storage": "denied",
+            "security_storage": "granted"
+          },
+          {
+            "region": "BE,EL,LT,PT,BG,ES,LU,RO,CZ,FR,HU,SI,DK,HR,MT,SK,DE,IT,NL,FI,EE,CY,AT,SE,IE,LV,PL,IS,NO,LI,CH",
+            "analytics_storage": "denied",
+            "ad_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "personalization_storage": "denied",
+            "functionality_storage": "denied",
+            "security_storage": "granted"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "GROUP",
+    "name": "Settings",
+    "displayName": "Settings",
+    "groupStyle": "ZIPPY_CLOSED",
+    "subParams": [
+      {
+        "type": "TEXT",
+        "name": "fides",
+        "displayName": "Fides consent",
+        "simpleValueType": true,
+        "defaultValue": "{{Fides}}",
+        "help": "A helper field to access the Fides consent from the events. This usually doesn\u0027t need to be changed."
+      },
+      {
+        "type": "TEXT",
+        "name": "event",
+        "displayName": "Event",
+        "simpleValueType": true,
+        "defaultValue": "{{Event}}",
+        "help": "A helper field to access the event names. This usually doesn\u0027t need to be changed."
+      },
+      {
+        "type": "TEXT",
+        "name": "waitForUpdate",
+        "displayName": "Wait for update",
+        "simpleValueType": true,
+        "defaultValue": 1000,
+        "valueValidators": [
+          {
+            "type": "NON_EMPTY"
+          },
+          {
+            "type": "NON_NEGATIVE_NUMBER"
+          }
+        ],
+        "help": "Time in milliseconds to wait for Fides.js consent values before using the defaults."
+      },
+      {
+        "type": "TEXT",
+        "name": "scriptUrl",
+        "displayName": "Fides.js Script URL",
+        "simpleValueType": true,
+        "help": "The URL should be under ethyca.com domain. Leave blank when Fides.js is already loaded on the page."
+      }
+    ]
+  }
+]
