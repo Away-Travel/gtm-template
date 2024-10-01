@@ -1,3 +1,4 @@
+const callInWindow = require("callInWindow");
 const injectScript = require("injectScript");
 const log = require("logToConsole");
 const setDefaultConsentState = require("setDefaultConsentState");
@@ -79,7 +80,10 @@ if (data.event === "gtm.init_consent") {
 
   if (data.scriptUrl) {
     log("Injecting Fides.js");
-    return injectScript(data.scriptUrl, data.gtmOnSuccess, data.gtmOnFailure);
+    return injectScript(data.scriptUrl, function() {
+      callInWindow("Fides.gtm");
+      data.gtmOnSuccess();
+    }, data.gtmOnFailure);
   }
 
 } else if (data.fides && (data.event === "FidesInitialized" || data.event === "FidesUpdating")) {

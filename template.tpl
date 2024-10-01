@@ -712,12 +712,74 @@ ___WEB_PERMISSIONS___
     "clientAnnotations": {
       "isEditedByUser": true
     },
-    "isRequired": false
+    "isRequired": true
+  },
+  {
+    "instance": {
+      "key": {
+        "publicId": "access_globals",
+        "versionId": "1"
+      },
+      "param": [
+        {
+          "key": "keys",
+          "value": {
+            "type": 2,
+            "listItem": [
+              {
+                "type": 3,
+                "mapKey": [
+                  {
+                    "type": 1,
+                    "string": "key"
+                  },
+                  {
+                    "type": 1,
+                    "string": "read"
+                  },
+                  {
+                    "type": 1,
+                    "string": "write"
+                  },
+                  {
+                    "type": 1,
+                    "string": "execute"
+                  }
+                ],
+                "mapValue": [
+                  {
+                    "type": 1,
+                    "string": "Fides.gtm"
+                  },
+                  {
+                    "type": 8,
+                    "boolean": false
+                  },
+                  {
+                    "type": 8,
+                    "boolean": false
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "clientAnnotations": {
+      "isEditedByUser": true
+    },
+    "isRequired": true
   }
 ]
 
 ___SANDBOXED_JS_FOR_WEB_TEMPLATE___
 
+const callInWindow = require("callInWindow");
 const injectScript = require("injectScript");
 const log = require("logToConsole");
 const setDefaultConsentState = require("setDefaultConsentState");
@@ -799,7 +861,10 @@ if (data.event === "gtm.init_consent") {
 
   if (data.scriptUrl) {
     log("Injecting Fides.js");
-    return injectScript(data.scriptUrl, data.gtmOnSuccess, data.gtmOnFailure);
+    return injectScript(data.scriptUrl, function() {
+      callInWindow("Fides.gtm");
+      data.gtmOnSuccess();
+    }, data.gtmOnFailure);
   }
 
 } else if (data.fides && (data.event === "FidesInitialized" || data.event === "FidesUpdating")) {
