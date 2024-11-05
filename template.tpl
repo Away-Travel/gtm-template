@@ -764,6 +764,45 @@ ___WEB_PERMISSIONS___
                     "boolean": true
                   }
                 ]
+              },
+              {
+                "type": 3,
+                "mapKey": [
+                  {
+                    "type": 1,
+                    "string": "key"
+                  },
+                  {
+                    "type": 1,
+                    "string": "read"
+                  },
+                  {
+                    "type": 1,
+                    "string": "write"
+                  },
+                  {
+                    "type": 1,
+                    "string": "execute"
+                  }
+                ],
+                "mapValue": [
+                  {
+                    "type": 1,
+                    "string": "Fides.experience.region"
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  },
+                  {
+                    "type": 8,
+                    "boolean": false
+                  },
+                  {
+                    "type": 8,
+                    "boolean": false
+                  }
+                ]
               }
             ]
           }
@@ -780,6 +819,7 @@ ___WEB_PERMISSIONS___
 ___SANDBOXED_JS_FOR_WEB_TEMPLATE___
 
 const callInWindow = require("callInWindow");
+const copyFromWindow = require("copyFromWindow");
 const injectScript = require("injectScript");
 const log = require("logToConsole");
 const setDefaultConsentState = require("setDefaultConsentState");
@@ -892,8 +932,19 @@ function updateGTMConsent(fidesConsent) {
     }
 
     // If none of the values are present, then fall back to the default from the data object
+    // However, first, we must check the region to choose the right region specific default
+    let fidesExperienceRegion = copyFromWindow("Fides.experience.region");
+    if (typeof fidesExperienceRegion === "string") {
+      fidesExperienceRegion = fidesExperienceRegion.toUpperCase().split("_")[0];
+    }
+    // no need for special group for UK+EU because it matches our default consent settings
+
     if (gtmConsent[key] === undefined) {
-      gtmConsent[key] = data["default_" + key];
+      if (fidesExperienceRegion === "US" || fidesExperienceRegion === "CA") {
+        gtmConsent[key] = data.regionalOverrides.filter(override => override.region === fidesExperienceRegion)[0][key];
+      } else {
+        gtmConsent[key] = data["default_" + key];
+      }
     }
   }
 
